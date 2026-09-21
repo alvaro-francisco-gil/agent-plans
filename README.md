@@ -42,6 +42,12 @@ scripts, no config file, no tooling to install.
 **Codex / Cursor** — the repo ships `.codex-plugin/` and `.cursor-plugin/` manifests that
 point at the same `skills/` directory.
 
+> **Tested:** Claude Code, end to end — clean clone, install, both skills parse, version
+> bump propagates. **Inferred:** Codex, Cursor and Gemini. Those manifests follow the shape
+> a published plugin uses and are checked by `scripts/validate.py`, but nothing has yet
+> loaded them in those tools. Tracked in
+> [docs/plans/ready/verify-codex-and-cursor-packaging.md](docs/plans/ready/verify-codex-and-cursor-packaging.md).
+
 **Any other agent** — clone the repo and point your agent at `skills/`, or copy
 `skills/managing-plans-lifecycle/` into wherever your tool keeps skills. The skill is a
 single Markdown file with YAML frontmatter and no runtime dependencies.
