@@ -2,7 +2,9 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "agent-plans",
   "description": "Repo-agnostic planning conventions for coding agents.",
-  "owner": { "name": "Alvaro Francisco Gil" },
+  "owner": {
+    "name": "Alvaro Francisco Gil"
+  },
   "plugins": [
     {
       "name": "plans-lifecycle",
@@ -11,6 +13,5 @@
       "category": "workflow",
       "homepage": "https://github.com/alvaro-francisco-gil/agent-plans"
     }
-  ],
-  "renames": { "agent-workflow": "plans-lifecycle" }
+  ]
 }

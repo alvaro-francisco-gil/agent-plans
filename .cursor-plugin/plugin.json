@@ -1,7 +1,7 @@
 {
   "name": "plans-lifecycle",
   "displayName": "Plans lifecycle",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A lifecycle convention for plan documents: docs/plans/{ideas,ready,ongoing} to docs/decisions. One file per topic, moved between folders as the work matures, deleted once the code is the source of truth.",
   "author": { "name": "Alvaro Francisco Gil" },
   "homepage": "https://github.com/alvaro-francisco-gil/agent-plans",
