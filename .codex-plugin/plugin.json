@@ -1,0 +1,25 @@
+{
+  "name": "plans-lifecycle",
+  "version": "1.0.0",
+  "description": "A lifecycle convention for plan documents: docs/plans/{ideas,ready,ongoing} to docs/decisions. One file per topic, moved between folders as the work matures, deleted once the code is the source of truth.",
+  "author": { "name": "Alvaro Francisco Gil", "url": "https://github.com/alvaro-francisco-gil" },
+  "homepage": "https://github.com/alvaro-francisco-gil/agent-plans",
+  "repository": "https://github.com/alvaro-francisco-gil/agent-plans",
+  "license": "MIT",
+  "keywords": ["plans", "planning", "workflow", "documentation", "lifecycle", "adr"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Plans lifecycle",
+    "shortDescription": "Where plans live and how they move: ideas to ready to ongoing to retired",
+    "longDescription": "A lifecycle convention for plan documents: docs/plans/{ideas,ready,ongoing} to docs/decisions. One file per topic, moved between folders as the work matures, deleted once the code is the source of truth.",
+    "developerName": "Alvaro Francisco Gil",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": [
+      "Where should this plan live?",
+      "What work is in flight right now?",
+      "This shipped - retire the plan."
+    ],
+    "websiteURL": "https://github.com/alvaro-francisco-gil/agent-plans"
+  }
+}
