@@ -1,6 +1,6 @@
 ---
 name: managing-plans-lifecycle
-description: Use when creating a plan or design doc, promoting one between stages (ideas → ready → ongoing → retired), starting or resuming in-progress work, retiring a finished plan, or surveying what work is in flight. Defines the `docs/plans/{ideas,ready,ongoing}/` convention: one file per topic, moved between folders as the work matures, deleted once the code is the source of truth.
+description: Use when creating a plan or design doc, promoting one between stages (ideas → ready → ongoing → retired), starting or resuming in-progress work, retiring a finished plan, or surveying what work is in flight. Defines the `docs/plans/{ideas,ready,ongoing}/` convention, in which one file per topic moves between folders as the work matures, deleted once the code is the source of truth.
 ---
 
 # Managing the plans lifecycle
