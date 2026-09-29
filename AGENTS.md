@@ -51,3 +51,14 @@ loaded. So:
 - State the rule, then the anti-pattern. Agents follow "never do X" better than prose.
 - No repo-specific assumptions. If a line only makes sense in the author's repos, it is a
   bug — this ships to strangers.
+
+## Local agent discovery
+
+Claude Code and Codex read `AGENTS.md` directly. Use Claude Code 2.1.281 or
+newer; if a parent/local Claude instruction file shadows it, select
+`claude-md-and-agents-md` in `/config`.
+
+Published skill sources stay in `skills/`. `.agents/skills` points to that
+directory and `.claude/skills` points to `.agents/skills`, so local discovery
+and every plugin manifest use the same files. Preserve Git symlinks when
+cloning on Windows. Do not put copied skills in either discovery directory.
