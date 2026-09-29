@@ -149,6 +149,9 @@ Then `git mv docs/plans/ready/<topic>.md docs/plans/ongoing/<topic>.md`.
 - **Next:** the immediate next action
 - **Blockers:** any open questions or external dependencies
 - **Handoff:** non-obvious context another agent needs to resume — env state, regen steps, "rerun X before pushing", anything not visible from the diff
+- **Due:** YYYY-MM-DD — optional; a real-world deadline, not an estimate
+- **Blocked-by:** optional; comma-separated `<slug>` (same repo) or `<repo>:<slug>`
+- **Waiting-on:** optional; who or what outside the repo is holding this
 ```
 
 Update the Status section:
@@ -157,6 +160,10 @@ Update the Status section:
 - Whenever a blocker resolves or a new one appears
 
 The Status section is the contract with the next agent (or future you). If a field doesn't apply, write `none` — don't omit it.
+
+`Due`, `Blocked-by` and `Waiting-on` are optional and machine-readable: tools that survey
+plans across many repos rank on them. Omit them rather than writing `none`. Prefer
+`Waiting-on` over a `waiting/` subfolder; the folder is the stage, not the reason.
 
 #### Rollout / phase table (keep it when the plan has one)
 
