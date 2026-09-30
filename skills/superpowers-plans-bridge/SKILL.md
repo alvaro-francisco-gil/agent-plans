@@ -43,5 +43,5 @@ same filename from `ideas/` to `ongoing/`.
 ## Why the date prefix goes
 
 The filename is stable across the whole lifecycle. A date that was accurate when the
-proposal was drafted is misleading by the time implementation starts — and `git log` plus
+proposal was drafted is misleading by the time implementation starts — and `git log` and
 the plan's `Gate` already answer every timing question worth asking.

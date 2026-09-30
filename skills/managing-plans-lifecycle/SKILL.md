@@ -148,7 +148,8 @@ Not `docs/archive/`, not `docs/plans/{queued,blocked}/`, and no tool-specific sc
 A new plan lands in `docs/plans/ideas/<topic>.md` directly. No separate spec/plan file split — one file evolves through the stages. If your planning tool writes it somewhere else, or with a date prefix, move and rename it on the spot.
 
 A new `ideas/` doc should contain at minimum:
-- **Priority:** `low`, `medium`, or `high`
+- the metadata block under the title, at least `**Priority:** low | medium | high` as a
+  bare line (not a bullet; a bulleted key is not read as the block)
 - **Goal:** one sentence
 - **Context:** why this is being proposed
 - **Design / approach:** the actual proposal
@@ -249,7 +250,7 @@ When *auditing* rather than listing, the bar is higher: for each plan that looks
 - **Keeping the date prefix.** Dates rot as the plan evolves; the filename should be stable across the lifecycle.
 - **An `ongoing/` plan without `Gate` and `Next`.** It is unusable for handoff; fix it before doing any other work.
 - **Hand-writing state.** `Updated`, `Stage` or `Status` lines rot; the folder, `Gate` and git already carry them.
-- **Moving a plan into `ongoing/` without a rollout/phase table when it has per-env or multi-phase state.** The Status line alone hides which envs shipped.
+- **Moving a plan into `ongoing/` without a rollout/phase table when it has per-env or multi-phase state.** The metadata block alone hides which envs shipped.
 - **Writing a decision doc that restates the implementation.** If a future reader could learn it by reading the code, it doesn't belong in `docs/decisions/`.
 - **Promoting `ideas/` → `ready/` without resolving open questions.** Move the questions to "Out of scope" or answer them. `ready/` means decided.
 - **A vague gate.** `blocked:waiting` says nothing; name who or what, and add `(recheck YYYY-MM-DD)`.
@@ -271,5 +272,6 @@ v1 kept a hand-written `## Status` section. To migrate a repo:
    - `Due` stays.
 2. Delete `Updated`, `Stage`, `Status` and `Last reviewed`. Keep `Done` and `Handoff` as
    prose sections if they still say something.
-3. Commit the whole repo's migration as **one commit**. It touches many plans and ships
-   nothing, so it is a sweep and resets no plan's freshness.
+3. Commit the whole repo's migration as **one commit**. When it touches more than 4 plans
+   it is a sweep and resets no plan's freshness; a smaller migration does reset them, so
+   those plans read as advanced on the migration day.

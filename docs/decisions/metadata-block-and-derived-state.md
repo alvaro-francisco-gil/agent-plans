@@ -4,13 +4,13 @@
 
 v1 asked for a hand-written `## Status` section with `Updated`, `Stage`, `Done`, `Next`,
 `Blockers` and `Handoff`, and v1.0.4 added `Due`, `Blocked-by` and `Waiting-on`. In
-practice, the repo with the most plans (ordago-apps, 160) found the Status header in only
-2 of its 23 `ongoing/` plans. A cross-repo scanner built on `Updated` then showed the
+practice, the largest adopting repo (160 plans) found the Status header in only 2 of its
+23 `ongoing/` plans. A cross-repo scanner built on `Updated` then showed the
 other failure: a mechanical commit (a migration, a rename) made stalled plans look fresh.
 
 ## Decision
 
-Adopt ordago-apps' model:
+Adopt the model that repo had already moved to:
 - a block of `Priority` / `Gate` / `Next` (plus `Landed` where a repo deploys, and `Due`
   for real deadlines) between the title and the first `## `;
 - one typed `Gate` for every kind of wait;
