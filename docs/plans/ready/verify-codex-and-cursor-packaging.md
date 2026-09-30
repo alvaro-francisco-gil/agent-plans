@@ -1,7 +1,7 @@
 # Verify the Codex and Cursor packaging
 
 **Priority:** medium
-**Updated:** 2026-09-21
+**Gate:** none
 **Next:** install the plugin in Codex and in Cursor, and check the skill fires on "where should this plan live?" in a scratch repo with `docs/plans/`
 
 ## Goal
