@@ -12,7 +12,7 @@ docs/
 ├── plans/
 │   ├── ideas/     Proposals. May or may not happen.
 │   ├── ready/     Decided. Plan and tasks written. Not started.
-│   └── ongoing/   Being implemented. Status header required.
+│   └── ongoing/   Being implemented. Metadata block required.
 └── decisions/     Durable rationale, written when a plan retires.
 ```
 
@@ -73,6 +73,10 @@ Optional stages (`ongoing/soak/`, `docs/incidents/`, `docs/ops/`) exist only if 
 instructions declare them. Don't create them speculatively.
 
 ## Conventions worth knowing before you adopt it
+
+- **v2 (2.0.0): one metadata block, state derived.** Each plan carries `Priority`, `Gate`
+  and `Next` (plus `Landed` and `Due` where they apply) under its title. `Updated` and
+  `Stage` are gone: the folder and git carry them. See "Migrating from v1" in the skill.
 
 - **No date prefixes.** `image-cropper-ui.md`, not `2026-03-14-image-cropper-ui.md`. The
   name is stable across the lifecycle; git log carries the dates.
