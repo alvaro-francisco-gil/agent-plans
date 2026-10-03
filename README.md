@@ -11,7 +11,7 @@ must contain to be picked up by someone else.
 docs/
 ├── plans/
 │   ├── ideas/     Proposals. May or may not happen.
-│   ├── ready/     Decided. Plan and tasks written. Not started.
+│   ├── ready/     Approved. Not started. Detailed plan written at start.
 │   └── ongoing/   Being implemented. Metadata block required.
 └── decisions/     Durable rationale, written when a plan retires.
 ```

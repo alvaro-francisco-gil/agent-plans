@@ -17,7 +17,7 @@ This skill owns the *lifecycle* — where plan files live, when they move, and w
 docs/
 ├── plans/
 │   ├── ideas/        # Proposals. May or may not happen. No tasks required.
-│   ├── ready/        # Decided to implement. Plan/tasks written. Not started.
+│   ├── ready/        # Approved to implement. Not started. Detailed plan written at start.
 │   └── ongoing/      # Being implemented. Metadata block at top is required.
 │       └── soak/     # OPTIONAL stage — implementation done and verified in
 │                     # production; only elapsed-time soak remains. See below.
@@ -159,12 +159,12 @@ No checkboxes required at this stage. The file might sit here for months or get 
 
 ### `ideas/` → `ready/`
 
-The decision has been made to implement. Before moving:
+The decision has been made to implement. `ready/` records that decision — *this should exist* — and nothing more. Before moving:
 
-1. Resolve or accept the open questions inline (delete the section once empty, or rename to "Out of scope" with the rejections).
+1. Resolve or accept the open questions inline (delete the section once empty, or rename to "Out of scope" with the rejections). These are the decisions, and they hold.
 2. Set or re-check the mandatory **Priority** label.
-3. Add a **File Structure** section listing files to create/modify/delete.
-4. Add **Tasks** with `- [ ]` checkboxes, grouped into stages. Use whatever planning tool you prefer for the breakdown if the plan is non-trivial.
+
+Do **not** write the File Structure and Tasks yet. They describe code, and code moves while a plan waits: a breakdown written at promotion is stale by the time anyone starts, and whoever starts has to verify it against the code anyway. Write them at the next transition, against that day's code. A repo that wants them earlier says so in its policy file.
 
 Then `git mv docs/plans/ideas/<topic>.md docs/plans/ready/<topic>.md`.
 
@@ -172,9 +172,11 @@ Then `git mv docs/plans/ideas/<topic>.md docs/plans/ready/<topic>.md`.
 
 Implementation is starting. Before moving:
 
-1. Complete the metadata block: `Gate` and `Next` (and `Landed` where the repo declares
+1. **Verify the plan against the current code.** A `ready/` plan's decision holds; its facts may not — check every path, symbol and "X is not done" it relies on. If the premise no longer holds, retire it or send it back to `ideas/` instead.
+2. Add the **File Structure** (files to create, modify, delete) and **Tasks** (`- [ ]` checkboxes, grouped into stages) for the code as it is now — or wherever your repo keeps implementation plans, such as the PR description.
+3. Complete the metadata block: `Gate` and `Next` (and `Landed` where the repo declares
    it). `Gate: none` if work can start now.
-2. Put hand-off context the next agent needs (env state, "rerun X before pushing") in a
+4. Put hand-off context the next agent needs (env state, "rerun X before pushing") in a
    `## Handoff` section, as prose.
 
 Then `git mv docs/plans/ready/<topic>.md docs/plans/ongoing/<topic>.md`.
