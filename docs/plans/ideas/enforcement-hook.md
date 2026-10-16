@@ -57,3 +57,10 @@ files landing in the wrong folder.
 
 Adding it later is additive — the per-agent manifest directories already exist, so it is a
 new `hooks/` directory and a version bump, not a restructure.
+
+## Related: a header lint
+
+The same hook mechanism could warn, without denying, when an `ongoing/` plan lacks `Gate` or
+`Next` or a plan file has a date prefix, and could list ongoing plans with their `Next`
+lines at session start (planning-with-files does both). It has the same scope and trust
+costs as the redirect hook, so decide both together.
