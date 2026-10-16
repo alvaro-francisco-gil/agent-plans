@@ -20,7 +20,7 @@ Cases worth covering first:
 - Retiring a plan produces `git rm` and a `docs/decisions/` entry, not an archive move.
 - An `ongoing/` plan gets `Gate` and `Next`.
 - With superpowers installed and `docs/plans/` present, brainstorming output lands in
-  `docs/plans/ideas/`; without `docs/plans/`, the bridge does nothing.
+  `docs/plans/ideas/`; plan mode output is moved there too.
 
 ## Open questions
 

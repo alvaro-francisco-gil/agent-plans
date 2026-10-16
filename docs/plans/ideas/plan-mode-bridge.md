@@ -4,16 +4,16 @@
 
 ## Goal
 
-Document, and possibly automate, setting Claude Code's `plansDirectory` so plan mode
-writes into `docs/plans/ideas/` instead of `~/.claude/plans/`, giving plan mode the same
-single index the superpowers bridge gives superpowers.
+Go one step beyond the skill's "Plans written by other tools" rule, which moves a plan-mode
+file after the fact: document, and possibly automate, setting Claude Code's
+`plansDirectory` so plan mode writes into `docs/plans/ideas/` in the first place.
 
 ## Context
 
-Plan mode is the most common way Claude Code users plan, and by default its output lives
-outside the repo, where nobody else can find it. The superpowers bridge already solves the
-same problem for one framework. Third-party guides disagree on the `plansDirectory`
-default; Anthropic's docs say `~/.claude/plans/`.
+Plan mode is the most common way Claude Code users plan, and by default its output lives in
+`~/.claude/plans/`, outside the repo. Since 3.0.0 the skill moves such files into
+`docs/plans/ideas/`, but only when it notices them. Third-party guides disagree on the
+`plansDirectory` default; Anthropic's docs say `~/.claude/plans/`.
 
 ## Design / approach
 
@@ -23,5 +23,5 @@ importers that move other frameworks' spec folders (Spec Kit's `specs/NNN-*`, Op
 
 ## Open questions
 
-- Plan mode's filenames are generated. Does the rename to a topic slug need a rule in
-  the skill?
+- Plan mode's filenames are generated. Is "rename to a topic slug" in the skill enough, or
+  does the recipe need its own rule?

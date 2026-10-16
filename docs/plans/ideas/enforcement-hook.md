@@ -4,12 +4,12 @@
 
 ## Goal
 
-Decide whether `superpowers-plans-bridge` should be backed by a `PreToolUse` hook that
+Decide whether the "Plans written by other tools" rule in `managing-plans-lifecycle` should be backed by a `PreToolUse` hook that
 denies writes to a tool-specific plan folder, instead of relying on the skill text alone.
 
 ## Context
 
-The bridge resolves one conflict: superpowers' `brainstorming` and `writing-plans` write to
+The rule resolves one conflict: superpowers' `brainstorming` and `writing-plans` write to
 `docs/superpowers/specs|plans/` with date-prefixed filenames, while this convention wants
 `docs/plans/ideas/<topic>.md`.
 

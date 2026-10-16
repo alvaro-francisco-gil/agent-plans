@@ -48,7 +48,7 @@ On Claude Code 2.1.275 or later, one step does both:
 **Codex / Cursor** — the repo ships `.codex-plugin/` and `.cursor-plugin/` manifests that
 point at the same `skills/` directory.
 
-> **Tested:** Claude Code, end to end — clean clone, install, both skills parse, version
+> **Tested:** Claude Code, end to end — clean clone, install, the skill parses, version
 > bump propagates. **Inferred:** Codex, Cursor and Gemini. Those manifests follow the shape
 > a published plugin uses and are checked by `scripts/validate.py`, but nothing has yet
 > loaded them in those tools. Tracked in
@@ -60,13 +60,11 @@ single Markdown file with YAML frontmatter and no runtime dependencies.
 
 ## What ships
 
-| Skill | Purpose |
-|---|---|
-| `managing-plans-lifecycle` | The convention. Stands alone. |
-| `superpowers-plans-bridge` | Optional. Loads only if you also use [superpowers](https://github.com/obra/superpowers) in a repo that already has `docs/plans/`. Changes where superpowers saves and reads plan files, never what it does. |
-
-Both ship in one install. The bridge stays dormant unless superpowers is actually in play,
-so there is no dependency on it and nothing to configure if you do not use it.
+One skill, `managing-plans-lifecycle`: the convention. It also covers plans that other
+tools write. When [superpowers](https://github.com/obra/superpowers), Claude Code's plan
+mode or any other planning tool saves a plan outside `docs/plans/`, the skill moves it to
+`docs/plans/ideas/<topic>.md` and leaves the tool in charge of the content. There is no
+dependency on any of them and nothing to configure.
 
 ## Try it
 
@@ -86,9 +84,9 @@ in your own repo, under `docs/plans/` and `docs/decisions/`.
 
 - **The skill doesn't fire.** Ask about plans directly ("where should this plan live?"), or
   run `/plugin` and check that `plans-lifecycle` is installed and enabled.
-- **Superpowers still writes to `docs/superpowers/`.** The bridge only acts in repos that
-  already have `docs/plans/`. Create the folders first. If a file still lands there, the
-  bridge tells the agent to move it to `docs/plans/ideas/` and strip the date.
+- **Another planning tool still writes somewhere else.** The skill moves the file to
+  `docs/plans/ideas/` and strips any date prefix as soon as it notices. If the tool can be
+  configured to write there directly, do that once.
 - **An update didn't arrive.** Claude Code updates only when the plugin's `version`
   changes. Run `/plugin` and update the marketplace.
 
@@ -110,6 +108,10 @@ Optional stages (`ongoing/soak/`, `docs/incidents/`, `docs/ops/`) exist only if 
 instructions declare them. Don't create them speculatively.
 
 ## Conventions worth knowing before you adopt it
+
+- **v3 (3.0.0): one skill.** The separate `superpowers-plans-bridge` skill is gone; the
+  main skill's "Plans written by other tools" section covers superpowers, plan mode and any
+  other planning tool.
 
 - **v2 (2.0.0): one metadata block, state derived.** Each plan carries `Priority`, `Gate`
   and `Next` (plus `Landed` and `Due` where they apply) under its title. `Updated` and

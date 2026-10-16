@@ -67,6 +67,6 @@ than leave it implied.
 
 ## Out of scope
 
-The `superpowers-plans-bridge` skill on non-Claude platforms. superpowers ships its own
+The "Plans written by other tools" rule on non-Claude platforms. superpowers ships its own
 Codex and Cursor manifests, but whether its skills conflict there in the same way is a
 separate question from whether our packaging loads at all.

@@ -1,6 +1,6 @@
 ---
 name: managing-plans-lifecycle
-description: Use when creating a plan or design doc, promoting one between stages (ideas → ready → ongoing → retired), starting or resuming in-progress work, retiring a finished plan, or surveying what work is in flight. Defines the `docs/plans/{ideas,ready,ongoing}/` convention, in which one file per topic moves between folders as the work matures, deleted once the code is the source of truth.
+description: Use when creating a plan or design doc, promoting one between stages (ideas → ready → ongoing → retired), starting or resuming in-progress work, retiring a finished plan, surveying what work is in flight, or when another planning tool (superpowers, plan mode, a spec framework) saves a plan outside docs/plans/. Defines the `docs/plans/{ideas,ready,ongoing}/` convention, in which one file per topic moves between folders as the work matures, deleted once the code is the source of truth.
 ---
 
 # Managing the plans lifecycle
@@ -132,6 +132,32 @@ Not `docs/archive/`, not `docs/plans/{queued,blocked}/`, and no tool-specific sc
 - **No tool-specific plan folder.** Whatever your planning tool calls its own output directory, the file belongs in `docs/plans/ideas/`. One index, not two.
 - **No `docs/archive/`.** Shipped plans are deleted, not archived — an archived plan is a stale snapshot that lies to a future reader as soon as the code drifts. Git history (`git log -- docs/plans/<slug>.md`, `git show <sha>`) recovers any deleted plan.
 - **No `queued/` or `blocked/`.** "Decided, ready to start" is `ready/`. "Waiting on a trigger/decision" is `ideas/` if undecided, or `ready/` with the gate stated inline if decided. "Maybe never" is `ideas/`.
+
+### Plans written by other tools
+
+Other planning tools keep their job: they write the *content*. This convention decides
+*where the file lives*. When a tool saves a plan anywhere other than `docs/plans/`, the
+file moves on the spot, before anything else happens:
+
+1. Move it to `docs/plans/ideas/<topic>.md`, stripping any date or number prefix.
+2. Add the metadata block under the title.
+3. If the tool can be configured to write to `docs/plans/ideas/` directly, configure it,
+   and mention that to the user.
+
+From then on, **one file evolves through the stages**. A tool that writes a separate
+"spec" and "plan" does not get two files: the spec is the `ideas/` file, and the task
+breakdown is appended to the same file at `ready/` → `ongoing/`. A tool that executes a
+plan reads it from `docs/plans/ongoing/`.
+
+| Tool | Writes by default | Goes to |
+|---|---|---|
+| superpowers (`brainstorming`, `writing-plans`) | `docs/superpowers/{specs,plans}/YYYY-MM-DD-<topic>-design.md` | `docs/plans/ideas/<topic>.md`; the task breakdown joins the same file at `ready/` → `ongoing/` |
+| Claude Code plan mode | `~/.claude/plans/`, outside the repo | `docs/plans/ideas/<topic>.md`, renamed to a topic slug |
+| Any other tool | its own folder | `docs/plans/ideas/<topic>.md` |
+
+**Never create a tool-specific plan folder**, and never leave one behind: a second
+location silently defeats `ls docs/plans/ongoing/` as the answer to "what is in flight".
+The tool's content wins on content; this convention wins on location.
 
 ## When to invoke this skill
 
