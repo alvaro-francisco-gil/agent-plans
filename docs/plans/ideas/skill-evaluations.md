@@ -1,16 +1,16 @@
-# Trigger and behaviour evals
+# Trigger and behaviour evaluations
 
 **Priority:** medium
 
 ## Goal
 
-Prove with `claude plugin eval` that the skills fire when they should and change what the
+Prove with Claude Code's plugin evaluation runner that the skills fire when they should and change what the
 agent does, compared with a run without the plugin.
 
 ## Context
 
 The directory doesn't check whether a plugin helps, and no comparable planning tool
-publishes eval results. Evals would also catch regressions when the skill text changes.
+publishes evaluation results. Evaluations would also catch regressions when the skill text changes.
 
 ## Design / approach
 
@@ -24,4 +24,4 @@ Cases worth covering first:
 
 ## Open questions
 
-- Where do eval fixtures live so they don't ship in the plugin folder?
+- Where do evaluation fixtures live so they don't ship in the plugin folder?
