@@ -6,5 +6,8 @@
   "homepage": "https://github.com/alvaro-francisco-gil/agent-plans",
   "repository": "https://github.com/alvaro-francisco-gil/agent-plans",
   "license": "MIT",
-  "keywords": ["plans", "planning", "workflow", "documentation", "lifecycle", "adr"]
+  "keywords": ["plans", "planning", "workflow", "documentation", "lifecycle", "adr"],
+  "documentationUrl": "https://github.com/alvaro-francisco-gil/agent-plans#readme",
+  "supportUrl": "https://github.com/alvaro-francisco-gil/agent-plans/issues",
+  "privacyPolicyUrl": "https://github.com/alvaro-francisco-gil/agent-plans#privacy-and-data"
 }

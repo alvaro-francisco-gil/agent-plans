@@ -39,6 +39,12 @@ scripts, no config file, no tooling to install.
 /plugin install plans-lifecycle
 ```
 
+On Claude Code 2.1.275 or later, one step does both:
+
+```
+/plugin install plans-lifecycle --marketplace alvaro-francisco-gil/agent-plans
+```
+
 **Codex / Cursor** — the repo ships `.codex-plugin/` and `.cursor-plugin/` manifests that
 point at the same `skills/` directory.
 
