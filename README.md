@@ -57,10 +57,41 @@ single Markdown file with YAML frontmatter and no runtime dependencies.
 | Skill | Purpose |
 |---|---|
 | `managing-plans-lifecycle` | The convention. Stands alone. |
-| `superpowers-plans-bridge` | Optional. Loads only if you also use [superpowers](https://github.com/obra/superpowers), and redirects its spec output into `docs/plans/ideas/`. |
+| `superpowers-plans-bridge` | Optional. Loads only if you also use [superpowers](https://github.com/obra/superpowers) in a repo that already has `docs/plans/`. Changes where superpowers saves and reads plan files, never what it does. |
 
 Both ship in one install. The bridge stays dormant unless superpowers is actually in play,
 so there is no dependency on it and nothing to configure if you do not use it.
+
+## Try it
+
+In any repo, after installing:
+
+- "Write up an idea for adding rate limiting to the API." Creates `docs/plans/ideas/api-rate-limiting.md` with a `Priority` line.
+- "We've decided on rate limiting, move it to ready, and start it." Moves the same file with `git mv` through `ready/` to `ongoing/`, with `Gate` and `Next` filled in.
+- "What's in flight, and what's stale?" Lists `docs/plans/ongoing/`, reads each plan's `Next` line, and uses `git log` to flag plans nobody has touched recently.
+
+## Privacy and data
+
+Both skills are plain Markdown instructions. They contain no code, run no commands of their
+own, make no network requests and collect nothing. Everything they produce is ordinary files
+in your own repo, under `docs/plans/` and `docs/decisions/`.
+
+## Troubleshooting
+
+- **The skill doesn't fire.** Ask about plans directly ("where should this plan live?"), or
+  run `/plugin` and check that `plans-lifecycle` is installed and enabled.
+- **Superpowers still writes to `docs/superpowers/`.** The bridge only acts in repos that
+  already have `docs/plans/`. Create the folders first. If a file still lands there, the
+  bridge tells the agent to move it to `docs/plans/ideas/` and strip the date.
+- **An update didn't arrive.** Claude Code updates only when the plugin's `version`
+  changes. Run `/plugin` and update the marketplace.
+
+## Support
+
+Questions and bugs:
+[GitHub issues](https://github.com/alvaro-francisco-gil/agent-plans/issues). Report
+security problems privately through
+[GitHub security advisories](https://github.com/alvaro-francisco-gil/agent-plans/security/advisories/new).
 
 ## Layering
 

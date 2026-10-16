@@ -1,6 +1,6 @@
 ---
 name: superpowers-plans-bridge
-description: Use when superpowers:brainstorming, superpowers:writing-plans, superpowers:executing-plans, or superpowers:subagent-driven-development runs in a repo that uses the docs/plans lifecycle. Those skills write to docs/superpowers/specs|plans/ with date-prefixed filenames; this redirects their output into docs/plans/ideas/ with the date stripped, so there is one plan index instead of two.
+description: Use when superpowers:brainstorming, superpowers:writing-plans, superpowers:executing-plans, or superpowers:subagent-driven-development runs in a repo that already has docs/plans/{ideas,ready,ongoing}/. Changes only where those skills save and read plan files (docs/plans/ideas/<topic>.md instead of dated files under docs/superpowers/), never what they do. Does nothing in a repo without docs/plans/.
 ---
 
 # Superpowers ↔ plans lifecycle
