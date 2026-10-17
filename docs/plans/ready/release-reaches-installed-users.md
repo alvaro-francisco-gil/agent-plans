@@ -1,7 +1,6 @@
 # Make a release actually reach installed users
 
 **Priority:** medium — the repo's release rule rests on an auto-update that is off by default for this marketplace; the author's own installs are three releases behind
-**Gate:** decision:tell users to turn on auto-update for the agent-plans marketplace, and correct the "auto-updates" claim in the README and AGENTS.md?
 
 **Goal:** Users who install from this GitHub marketplace get each version bump, so a release such as 3.0.0 reaches the people who already installed the plugin.
 
@@ -69,11 +68,7 @@ As of 2026-10-17:
 
 ## Approval
 
-**Needs your yes.** Should the README tell users to turn on auto-update for the
-agent-plans marketplace, and should the README and AGENTS.md drop the claim that the plugin
-auto-updates on its own? Recommended answer: yes. The documented default is off for this
-marketplace, and installs on your own machine show the result: 1.0.2 and 2.0.1 against
-3.0.0.
+Decided 2026-10-17 (Álvaro): yes — tell users to turn on auto-update for the agent-plans marketplace, and correct the "auto-updates" claim in the README and AGENTS.md?
 
 ## Out of scope
 
