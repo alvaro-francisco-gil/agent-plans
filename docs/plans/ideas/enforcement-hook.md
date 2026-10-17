@@ -43,7 +43,7 @@ Ships per agent, alongside the existing manifests — `hooks/hooks.json` for Cla
   defaults to user scope. Without a guard it would block `docs/superpowers/` writes in
   repos that never adopted this convention. Guard on `docs/plans/` existing in cwd — but
   a guard that mis-fires silently blocks real work.
-- **Trust cost.** The plugin is currently two Markdown files a stranger can audit in four
+- **Trust cost.** The plugin is currently one Markdown file a stranger can audit in four
   minutes. Shipping shell that runs on tool calls is a different trust category, and works
   against adoption.
 - **Split behaviour.** Enforced on Claude and Cursor, advisory on Codex and Gemini. Is an

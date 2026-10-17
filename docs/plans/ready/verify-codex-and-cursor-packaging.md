@@ -13,7 +13,7 @@ Confirm that `.codex-plugin/plugin.json` and `.cursor-plugin/plugin.json` actual
 
 The repo claims to package the plans lifecycle for Claude Code, Codex, Cursor and Gemini.
 Only the Claude Code path has been exercised end to end: clean clone → marketplace resolves
-→ `claude plugin install` → both skills parse → a version bump propagates to an installed
+→ `claude plugin install` → the skill parses → a version bump propagates to an installed
 copy.
 
 The other three manifests were written by copying the shape superpowers uses — a real
@@ -47,13 +47,13 @@ than leave it implied.
 
 ### Codex
 - [ ] Install the plugin from this repo in Codex
-- [ ] Confirm both skills are discovered, with names and descriptions intact
+- [ ] Confirm the skill is discovered, with its name and description intact
 - [ ] Confirm `managing-plans-lifecycle` fires on "where should this plan live?"
 - [ ] Confirm the `interface` block renders as intended
 
 ### Cursor
 - [ ] Install the plugin from this repo in Cursor
-- [ ] Confirm both skills are discovered
+- [ ] Confirm the skill is discovered
 - [ ] Confirm the skill fires on the same prompt
 
 ### Gemini
