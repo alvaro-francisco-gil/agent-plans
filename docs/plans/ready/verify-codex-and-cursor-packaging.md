@@ -2,7 +2,7 @@
 
 **Priority:** medium
 **Gate:** none
-**Next:** install the plugin in Codex and in Cursor, and check the skill fires on "where should this plan live?" in a scratch repo with `docs/plans/`
+**Next:** install the plugin in Cursor and check the skill fires on "where should this plan live?" in a scratch repo with `docs/plans/` (Codex verified 2026-10-20)
 
 ## Goal
 
@@ -46,10 +46,16 @@ than leave it implied.
 ## Tasks
 
 ### Codex
-- [ ] Install the plugin from this repo in Codex
-- [ ] Confirm the skill is discovered, with its name and description intact
-- [ ] Confirm `managing-plans-lifecycle` fires on "where should this plan live?"
-- [ ] Confirm the `interface` block renders as intended
+- [x] Install the plugin from this repo in Codex — `codex plugin marketplace add
+      alvaro-francisco-gil/agent-plans` reads `.claude-plugin/marketplace.json` directly;
+      `codex plugin add plans-lifecycle@agent-plans` installs 3.0.0 (codex-cli 0.153.0)
+- [x] Confirm the skill is discovered, with its name and description intact — listed as
+      `plans-lifecycle:managing-plans-lifecycle`
+- [x] Confirm `managing-plans-lifecycle` fires unprompted — "write this idea down as a
+      plan" produced `docs/plans/ideas/dark-mode.md` with the `Priority` header and template
+      sections, the skill never named
+- [ ] Confirm the `interface` block renders as intended — needs the Codex app or the OpenAI
+      directory listing; the CLI shows no plugin card
 
 ### Cursor
 - [ ] Install the plugin from this repo in Cursor

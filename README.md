@@ -45,12 +45,22 @@ On Claude Code 2.1.275 or later, one step does both:
 /plugin install plans-lifecycle --marketplace alvaro-francisco-gil/agent-plans
 ```
 
-**Codex / Cursor** — the repo ships `.codex-plugin/` and `.cursor-plugin/` manifests that
-point at the same `skills/` directory.
+**Codex**
+
+```
+codex plugin marketplace add alvaro-francisco-gil/agent-plans
+codex plugin add plans-lifecycle@agent-plans
+```
+
+**Cursor** — the repo ships a `.cursor-plugin/` manifest that points at the same `skills/`
+directory.
 
 > **Tested:** Claude Code, end to end — clean clone, install, the skill parses, version
-> bump propagates. **Inferred:** Codex, Cursor and Gemini. Those manifests follow the shape
-> a published plugin uses and are checked by `scripts/validate.py`, but nothing has yet
+> bump propagates. Codex (codex-cli 0.153.0, 2026-10-20): the marketplace adds from GitHub,
+> the plugin installs, the skill is listed as `plans-lifecycle:managing-plans-lifecycle`,
+> and on an unprompted "write this idea down as a plan" it filed `docs/plans/ideas/` with
+> the required header. **Inferred:** Cursor and Gemini. Those manifests follow the shape a
+> published plugin uses and are checked by `scripts/validate.py`, but nothing has yet
 > loaded them in those tools. Tracked in
 > [docs/plans/ready/verify-codex-and-cursor-packaging.md](docs/plans/ready/verify-codex-and-cursor-packaging.md).
 
