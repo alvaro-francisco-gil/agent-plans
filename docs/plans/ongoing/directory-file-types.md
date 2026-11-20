@@ -1,7 +1,9 @@
 # Remove scripts/validate.py before the next release
 
 **Priority:** high — the next version of Plans Lifecycle will be refused by Anthropic's plugin directory while the repo holds a script
-**Next:** replace `scripts/validate.py` with short steps in `.github/workflows/validate.yml`, delete it, then release
+**Landed:** none
+**Gate:** none
+**Next:** verify the plan against main, then build it (workspace worker, 2026-11-20); the release and directory resubmission stay Álvaro's
 
 **Goal:** Keep Plans Lifecycle publishable in Anthropic's plugin directory. The live 3.0.0
 (`ae42355`) is unaffected; the rule applies to every new version.
