@@ -1,9 +1,9 @@
 # Remove scripts/validate.py before the next release
 
 **Priority:** high — the next version of Plans Lifecycle will be refused by Anthropic's plugin directory while the repo holds a script
-**Landed:** none
-**Gate:** none
-**Next:** verify the plan against main, then build it (workspace worker, 2026-11-20); the release and directory resubmission stay Álvaro's
+**Landed:** PR #1 open (33ee0b6): `validate.py` removed, its checks moved into `validate.yml` with a file-type and `#!` check, rule added to AGENTS.md; CI green
+**Gate:** blocked:Álvaro merges PR #1
+**Next:** after the merge it ships with the next content release (version bump there), then the directory resubmission. `.gitkeep` files and the two skills symlinks are fine: agent-record 3efaabc carries both and passed every automatic check on 2026-11-11. The Claude CLI stays unpinned in CI so CI tracks the directory's current checks
 
 **Goal:** Keep Plans Lifecycle publishable in Anthropic's plugin directory. The live 3.0.0
 (`ae42355`) is unaffected; the rule applies to every new version.
