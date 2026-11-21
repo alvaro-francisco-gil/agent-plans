@@ -60,7 +60,7 @@ directory.
 > the plugin installs, the skill is listed as `plans-lifecycle:managing-plans-lifecycle`,
 > and on an unprompted "write this idea down as a plan" it filed `docs/plans/ideas/` with
 > the required header. **Inferred:** Cursor and Gemini. Those manifests follow the shape a
-> published plugin uses and are checked by `scripts/validate.py`, but nothing has yet
+> published plugin uses and are checked in CI (`.github/workflows/validate.yml`), but nothing has yet
 > loaded them in those tools. Tracked in
 > [docs/plans/ready/verify-codex-and-cursor-packaging.md](docs/plans/ready/verify-codex-and-cursor-packaging.md).
 

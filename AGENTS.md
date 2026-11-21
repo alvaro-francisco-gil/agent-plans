@@ -41,6 +41,17 @@ identical across every per-agent manifest.
 Renames go in the `renames` map in `.claude-plugin/marketplace.json`, which is
 **append-only** — old entries stay forever so migration chains keep resolving.
 
+## Allowed file types
+
+**Every tracked file is Markdown, text, JSON, YAML or a PNG/JPEG/GIF/WebP/ICO image**
+(plus `LICENSE`, `.gitignore`, `.gitkeep` and the discovery symlinks), and **none starts
+with `#!`.** Anthropic's plugin directory unpacks the whole repo and refuses any other file
+— scripts, programs, package-manager config — from an organization it has not verified,
+which a personal account is not. Dev tooling counts. Never add a script, not even under
+`scripts/` or for CI only: put a check in `.github/workflows/validate.yml` as a step of a
+line or two. A long program inside the YAML is the same script by another name. CI enforces
+this list.
+
 ## Writing style for skills
 
 Skills here are read by agents, in context, competing for attention with everything else

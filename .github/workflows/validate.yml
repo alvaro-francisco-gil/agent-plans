@@ -1,17 +1,38 @@
 name: validate
 
+# Each check is a line or two on tools the runner already has (jq, yq, git) plus the
+# Claude Code CLI. No script lives in the repo: Anthropic's plugin directory refuses any
+# file that is not Markdown, text, JSON, YAML or an allowed image (see AGENTS.md).
+
 on:
   push:
     branches: [main]
   pull_request:
+
+env:
+  MANIFESTS: .claude-plugin/marketplace.json .claude-plugin/plugin.json .codex-plugin/plugin.json .cursor-plugin/plugin.json gemini-extension.json
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: pip install pyyaml
-      - run: python3 scripts/validate.py
+
+      - name: Every manifest is valid JSON
+        run: for f in $MANIFESTS; do jq empty "$f" || { echo "::error file=$f::missing or invalid JSON"; exit 1; }; done
+
+      - name: Every manifest that carries a version carries the same one
+        run: jq -r '.version // empty' $MANIFESTS | sort -u | awk 'END { if (NR != 1) { print "::error::version drift across manifests"; exit 1 } }'
+
+      - name: Every skill has YAML frontmatter with a description and a name matching its directory
+        run: |
+          for d in skills/*/; do n=$(basename "$d"); f="$d/SKILL.md"
+            [ "$(yq --front-matter=extract '.name' "$f")" = "$n" ] && [ -n "$(yq --front-matter=extract '.description // ""' "$f")" ] || { echo "::error file=$f::frontmatter must parse, name '$n', and have a description"; exit 1; }; done
+
+      - name: Only Markdown, text, JSON, YAML and images are tracked, and nothing starts with #!
+        run: |
+          git ls-files -s | awk '$1 != "120000" { print $4 }' | grep -Ev '\.(md|txt|json|ya?ml|png|jpe?g|gif|webp|ico)$|(^|/)(LICENSE|\.gitignore|\.gitkeep)$' && { echo "::error::file type the plugin directory refuses (see above)"; exit 1; }
+          for f in $(git ls-files); do [ -f "$f" ] && [ ! -L "$f" ] && [ "$(head -c2 "$f")" = '#!' ] && { echo "::error file=$f::starts with #!"; exit 1; }; done; true
+
+      - name: Claude Code accepts the plugin and marketplace
+        run: npm install -g @anthropic-ai/claude-code && claude plugin validate . --strict --profile directory
